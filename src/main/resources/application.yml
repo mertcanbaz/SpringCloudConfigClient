@@ -5,10 +5,53 @@ spring:
   application:
     name: ClientApp
   profiles:
-    active: local
+    active: dev
 
 management:
   endpoints:
     web:
       exposure:
         include: "*"
+---
+
+spring:
+  cloud:
+    config:
+      uri: http://localhost:8888
+      profile: test
+  config:
+    activate:
+      on-profile: local
+
+---
+
+spring:
+  cloud:
+    config:
+      uri: http://localhost:8888
+      profile: dev
+  config:
+    activate:
+      on-profile: dev
+
+---
+
+spring:
+  cloud:
+    config:
+      uri: http://localhost:8888
+      profile: test
+  config:
+    activate:
+      on-profile: test
+
+---
+
+spring:
+  cloud:
+    config:
+      uri: http://localhost:8888
+      profile: prod
+  config:
+    activate:
+      on-profile: prod
